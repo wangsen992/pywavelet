@@ -26,5 +26,5 @@ def reconstruct_signal(W_n, wavelet, scales, dj, dt):
     return scaling_factor * (np.real(W_n) / scales[:,np.newaxis]**0.5).sum(axis=0)
 
 def compute_energy_density(W_n, scales):
-    return np.abs(W_n * W_n.conjugate()) / scales[:,np.newaxis]**0.5
+    return np.abs(W_n * np.conjugate(W_n)) / scales[:,np.newaxis]**0.5
 
