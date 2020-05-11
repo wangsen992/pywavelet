@@ -39,6 +39,10 @@ class WaveletMorlet(object):
         return 4 * np.pi * scale / (6 + np.sqrt(2 + 6**2))
 
     @staticmethod
+    def period_to_scale(period):
+        return period * (6 + np.sqrt(2 + 6**2)) / (4 * np.pi)
+
+    @staticmethod
     def scale_to_coi(scale):
         return np.sqrt(2) *scale
 
