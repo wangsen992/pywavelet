@@ -9,11 +9,6 @@ def power_plotter(ax, time, periods, values, levels, **kwargs):
                       np.log2(np.abs(values)), 
                       np.log2(levels), 
                       cmap='jet')
-    img = ax.contour(time, 
-                      np.log2(periods), 
-                      np.log2(np.abs(values)), 
-                      np.log2(levels), 
-                      colors='k', linstyles='-')
     ax.set(**kwargs)
     
     # Default settings for ticks and labels
