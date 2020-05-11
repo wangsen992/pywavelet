@@ -1,6 +1,7 @@
 import math
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
 
 def power_plotter(ax, time, periods, values, levels, **kwargs):
     img = ax.contourf(time, 
@@ -8,6 +9,11 @@ def power_plotter(ax, time, periods, values, levels, **kwargs):
                       np.log2(np.abs(values)), 
                       np.log2(levels), 
                       cmap='jet')
+    img = ax.contour(time, 
+                      np.log2(periods), 
+                      np.log2(np.abs(values)), 
+                      np.log2(levels), 
+                      colors='k', linstyles='-')
     ax.set(**kwargs)
     
     # Default settings for ticks and labels
@@ -50,3 +56,13 @@ def levels(val, val_min=None, val_max=None):
         val_min = val_min * 2
         lev.append(val_min)
     return lev
+
+@FuncFormatter
+def TimeFormatter(val, pos):
+    val = 2.**val
+    if val > 60:
+        return f"{val/60:2.1f} min"
+    elif val < 1:
+        return f"{val * 1000:3.1f} ms"
+    else:
+        return f"{val} sec"

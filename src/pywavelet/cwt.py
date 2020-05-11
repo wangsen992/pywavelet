@@ -22,6 +22,7 @@ def wavelet(data, dt, scales, wavelet, file=open('/dev/stdout','w')):
     return W_n
 
 def reconstruct_signal(W_n, wavelet, scales, dj, dt):
+    """Reconstruct real signal from its wavelet coefficients"""
     scaling_factor = dj * dt**0.5 / (wavelet.C_delta * wavelet.psi_0_0)
     return scaling_factor * (np.real(W_n) / scales[:,np.newaxis]**0.5).sum(axis=0)
 
