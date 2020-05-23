@@ -27,7 +27,7 @@ def reconstruct_signal(W_n, wavelet, scales, dj, dt):
     scaling_factor = dj * dt**0.5 / (wavelet.C_delta * wavelet.psi_0_0)
     return scaling_factor * (np.real(W_n) / scales[:,np.newaxis]**0.5).sum(axis=0)
 
-def compute_covariance(WW_n, wavelet, scales, dj, dt):
+def compute_covariance(WW_n, wavelet, dj, dt):
     """Implemetation based on xarray input instead of numpy array
 
     Input: 
