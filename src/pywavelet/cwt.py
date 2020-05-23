@@ -26,6 +26,11 @@ def reconstruct_signal(W_n, wavelet, scales, dj, dt):
     scaling_factor = dj * dt**0.5 / (wavelet.C_delta * wavelet.psi_0_0)
     return scaling_factor * (np.real(W_n) / scales[:,np.newaxis]**0.5).sum(axis=0)
 
+def compute_covariance(W_n1, W_n2, wavelet, scales, dj, dt):
+    scaling_factor = dj * dt / wavelet.C_delta
+    return (np.real(W_n1 * np.conjugate(W_n2)) / \
+            scales[:,np.newaxis]).sum(axis=0) * scaling_factor
+
 def compute_energy_density(W_n, scales):
     return np.abs(W_n * np.conjugate(W_n)) / scales[:,np.newaxis]**0.5
 
