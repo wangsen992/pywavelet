@@ -7,7 +7,7 @@ def compute_scale_range(s0, dj, j1):
     return np.array([s0 * 2 ** (j * dj) for j in range(j1)])
 
 def wavelet(data, dt, scales, wavelet, file=open('/dev/stdout','w')):
-    
+ 
     N = data.size
     # Pad data with zeros on two sides
     data_padded = np.concatenate([np.zeros(int(data.size/2)), data, np.zeros(int(data.size/2))])
