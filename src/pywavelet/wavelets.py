@@ -1,26 +1,33 @@
+from __future__ import annotations
+from abs import ABC, abstractmethod
 import numpy as np
 import scipy.special
 
-class BaseWavelet:
+class Wavelet(ABC):
 
+    @abstractmethod
     def __init__(self):
         pass
 
+    @abstractmethod
     def psi(self):
         pass
 
+    @abstractmethod
     def psi_hat(self):
         pass
 
+    @abstractmethod
     @staticmethod
     def scale_to_period(scale):
         pass
 
+    @abstractmethod
     @staticmethod
     def period_to_scale(period):
         pass
 
-class WaveletMorlet(object):
+class WaveletMorlet(Wavelet):
 
 
     def __init__(self, omega_0=6):
@@ -65,13 +72,17 @@ class WaveletMorlet(object):
     def scale_to_coi(scale):
         return np.sqrt(2) *scale
 
-class WaveletDOG(object):
+class WaveletDOG(Wavelet):
 
     def __init__(self, m=2):
         self.m = m
         self.name = 'DOG'
 
     def psi_hat(self, omega, scale, delta_t, normalized=True):
+        """
+        Input:
+            To be completed...
+        """
         m = self.m
         m_hat0 = -1j ** m / np.sqrt(scipy.special.gamma(m + 0.5)) * (scale * omega) ** m \
                 * np.exp(-(scale * omega)**2 /2)
