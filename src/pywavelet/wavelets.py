@@ -1,9 +1,28 @@
 import numpy as np
-import scipy.special 
+import scipy.special
+
+class BaseWavelet:
+
+    def __init__(self):
+        pass
+
+    def psi(self):
+        pass
+
+    def psi_hat(self):
+        pass
+
+    @staticmethod
+    def scale_to_period(scale):
+        pass
+
+    @staticmethod
+    def period_to_scale(period):
+        pass
 
 class WaveletMorlet(object):
 
-    
+
     def __init__(self, omega_0=6):
         self.omega_0 = omega_0
         self.name = 'Morlet'
@@ -11,7 +30,7 @@ class WaveletMorlet(object):
         self.C_delta = 0.776
         self.gamma = 2.32
         self.dj_0 = 0.60
-    
+
     def psi(self, del_t, scale, delta_t, normalized=True):
         """
         Input:
