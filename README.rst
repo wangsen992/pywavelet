@@ -1,10 +1,8 @@
 =========
 pywavelet
 =========
-
-
-Add a short description here!
-
+Fast wavelet analysis build on top of the series of papers by Torrence,
+Christopher, Compo and Gilbert (2001) "A practical guide to wavelet analysis". 
 
 Description
 ===========
