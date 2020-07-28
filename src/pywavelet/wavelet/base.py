@@ -2,7 +2,7 @@
 Base class for all wavelets.
 '''
 from __future__ import annotations
-from abs import ABC, abstractmethod
+from abc import ABC, abstractmethod
 import numpy as np
 import scipy.special
 
@@ -20,13 +20,13 @@ class BaseWavelet(ABC):
     def psi_hat(self):
         pass
 
-    @abstractmethod
     @staticmethod
+    @abstractmethod
     def scale_to_period(scale):
         pass
 
-    @abstractmethod
     @staticmethod
+    @abstractmethod
     def period_to_scale(period):
         pass
 
