@@ -7,6 +7,18 @@ def compute_scale_range(s0, dj, j1):
     return np.array([s0 * 2 ** (j * dj) for j in range(j1)])
 
 def wavelet(data, dt, scales, wavelet, file=open('/dev/stdout','w')):
+    """Main function to compute the wavelet coefficients
+
+    Arguments:
+        data (np.ndarray of shape N,): data to transform
+        dt (float) : resolution of input data
+        scales (np.ndarray of shape M,): scaling parameters for the wavelet
+        wavelet (wavelet object): input wavelet for transform
+        file (file object): file object to show logging info
+
+    Output: 
+        W_n (np.ndarray of shape NxM) : wavelet coefficients
+    """
     
     N = data.size
     # Pad data with zeros on two sides
